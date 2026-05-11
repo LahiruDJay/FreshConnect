@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Primary green rounded button with ripple effect -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#388E3C">
+
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#4CAF50" />
+            <corners android:radius="16dp" />
+        </shape>
+    </item>
+</ripple>
