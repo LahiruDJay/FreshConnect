@@ -16,6 +16,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.s23010691.freshconnect.MainActivity;
 import com.s23010691.freshconnect.R;
 
 /**
@@ -139,5 +140,12 @@ public class LoginActivity extends AppCompatActivity {
 
         // TODO: Implement actual authentication logic
         Toast.makeText(this, "Logging in...", Toast.LENGTH_SHORT).show();
+
+        // HomeActivity (Bottom Nav eka thiyena Activity eka) ekata yanna
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class); // Oyage Bottom Nav eka thiyenne MainActivity eke nam meka e widihata thiyanna
+        startActivity(intent);
+
+        // Login screen eka stack eken remove karanna (Back karama ayeth login ekata enne nathuwa inna)
+        finish();
     }
 }

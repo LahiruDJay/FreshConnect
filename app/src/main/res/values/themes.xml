@@ -10,9 +10,24 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>
+
+        <!-- Bottom Navigation customization -->
+        <item name="bottomNavigationStyle">@style/BottomNavStyle</item>
     </style>
 
     <style name="Theme.FreshConnect" parent="Base.Theme.FreshConnect" />
+
+    <!-- BottomNavigationView: clean flat style like the reference image -->
+    <style name="BottomNavStyle" parent="Widget.MaterialComponents.BottomNavigationView">
+        <!-- Remove the Material3 indicator pill/background highlight -->
+        <item name="itemActiveIndicatorStyle">@style/NavIndicatorHidden</item>
+    </style>
+
+    <!-- Make the active indicator invisible (no pill/bubble behind icon) -->
+    <style name="NavIndicatorHidden">
+        <item name="android:color">@android:color/transparent</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.None</item>
+    </style>
 
     <!-- Login screen specific styles -->
     <style name="LoginInputStyle">

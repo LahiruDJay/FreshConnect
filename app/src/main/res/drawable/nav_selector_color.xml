@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bottom nav item color selector: selected=green, unselected=dark grey -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="#4CAF50" android:state_checked="true" />
+    <item android:color="#1C1C1C" />
+</selector>
