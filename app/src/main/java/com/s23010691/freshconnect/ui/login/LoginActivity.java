@@ -18,11 +18,11 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.s23010691.freshconnect.MainActivity;
 import com.s23010691.freshconnect.R;
+import com.s23010691.freshconnect.network.SupabaseClient;
 
-/**
- * LoginActivity — Handles the login screen UI and user interactions.
- * Provides email/phone and password input with visibility toggle,
- * forgot password, login, and sign-up navigation.
+/*
+ * Login Activity
+ * Handles the login screen UI and user interactions. Provides email/phone and password input, forgot password, and sign-up navigation.
  */
 public class LoginActivity extends AppCompatActivity {
 
@@ -35,7 +35,13 @@ public class LoginActivity extends AppCompatActivity {
 
     // Tracks whether the password is currently visible
     private boolean isPasswordVisible = false;
+    private SupabaseClient supabaseClient;
 
+    /*
+     * Initializes the activity, configures edge-to-edge rendering, and sets up UI components.
+     * Parameters:
+     *   - savedInstanceState: Saved state bundle.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,11 +58,12 @@ public class LoginActivity extends AppCompatActivity {
             return insets;
         });
 
+        supabaseClient = new SupabaseClient();
         initViews();
         setupListeners();
     }
 
-    /**
+    /*
      * Binds all UI views to their respective fields.
      */
     private void initViews() {
@@ -68,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
         tvSignUp = findViewById(R.id.tvSignUp);
     }
 
-    /**
+    /*
      * Wires up click listeners for interactive elements.
      */
     private void setupListeners() {
@@ -92,9 +99,8 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    /**
+    /*
      * Toggles password field between masked and visible text.
-     * Also swaps the eye icon accordingly.
      */
     private void togglePasswordVisibility() {
         if (isPasswordVisible) {
@@ -112,7 +118,7 @@ public class LoginActivity extends AppCompatActivity {
         etPassword.setSelection(etPassword.getText().length());
     }
 
-    /**
+    /*
      * Validates input fields and performs login.
      */
     private void handleLogin() {
@@ -138,14 +144,24 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        // TODO: Implement actual authentication logic
-        Toast.makeText(this, "Logging in...", Toast.LENGTH_SHORT).show();
+        btnLogin.setEnabled(false);
+        btnLogin.setText("Logging in...");
 
-        // HomeActivity (Bottom Nav eka thiyena Activity eka) ekata yanna
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class); // Oyage Bottom Nav eka thiyenne MainActivity eke nam meka e widihata thiyanna
-        startActivity(intent);
+        supabaseClient.login(emailPhone, password, new SupabaseClient.AuthCallback() {
+            @Override
+            public void onSuccess() {
+                Toast.makeText(LoginActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
 
-        // Login screen eka stack eken remove karanna (Back karama ayeth login ekata enne nathuwa inna)
-        finish();
+            @Override
+            public void onError(String error) {
+                Toast.makeText(LoginActivity.this, error, Toast.LENGTH_LONG).show();
+                btnLogin.setEnabled(true);
+                btnLogin.setText("Log In");
+            }
+        });
     }
 }
