@@ -109,7 +109,7 @@
                     android:id="@+id/etFullName"
                     style="@style/LoginInputStyle"
                     android:autofillHints="name"
-                    android:hint="Full Name"
+                    android:hint="Enter Your Full Name"
                     android:importantForAutofill="yes"
                     android:inputType="textPersonName" />
 
@@ -136,7 +136,7 @@
                     android:id="@+id/etEmail"
                     style="@style/LoginInputStyle"
                     android:autofillHints="emailAddress"
-                    android:hint="Email address"
+                    android:hint="Enter Your Email Address"
                     android:importantForAutofill="yes"
                     android:inputType="textEmailAddress" />
 

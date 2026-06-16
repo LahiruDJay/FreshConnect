@@ -109,7 +109,7 @@
                     android:id="@+id/etEmailPhone"
                     style="@style/LoginInputStyle"
                     android:autofillHints="emailAddress"
-                    android:hint="Email or Phone Number"
+                    android:hint="Enter Your Email Address"
                     android:importantForAutofill="yes"
                     android:inputType="textEmailAddress" />
 
@@ -136,7 +136,7 @@
                     android:id="@+id/etPassword"
                     style="@style/LoginInputStyle"
                     android:autofillHints="password"
-                    android:hint="Password"
+                    android:hint="Enter Your Password"
                     android:importantForAutofill="yes"
                     android:inputType="textPassword"
                     android:paddingEnd="48dp" />

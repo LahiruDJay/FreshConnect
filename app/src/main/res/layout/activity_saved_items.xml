@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F9FA">
+
+    <!-- Header Toolbar -->
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#FFFFFF"
+        android:elevation="4dp"
+        android:paddingHorizontal="16dp">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_arrow_back"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            app:tint="#1C1C1C"
+            android:contentDescription="Back" />
+
+        <TextView
+            android:id="@+id/tvToolbarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Saved Items"
+            android:textSize="24sp"
+            android:textColor="#1C1C1C"
+            android:fontFamily="sans-serif-bold"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
+    <!-- Progress Loader -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:indeterminateTint="#10B981"
+        android:visibility="visible" />
+
+    <!-- Saved Products Grid List -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSavedItems"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:padding="8dp"
+        android:clipToPadding="false"
+        android:scrollbars="none"
+        android:visibility="gone" />
+
+    <!-- Empty State -->
+    <LinearLayout
+        android:id="@+id/llEmptyState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:src="@drawable/ic_bookmark"
+            app:tint="#CCCCCC"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="Empty Bookmarks" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No saved items yet!"
+            android:textSize="16sp"
+            android:textColor="#888888"
+            android:fontFamily="sans-serif-bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tap the bookmark icon on products to save them."
+            android:textSize="14sp"
+            android:textColor="#AAAAAA"
+            android:layout_marginTop="6dp"
+            android:gravity="center" />
+    </LinearLayout>
+
+</RelativeLayout>

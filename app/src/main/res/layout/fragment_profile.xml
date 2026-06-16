@@ -1,25 +1,616 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#F5F5F5"
-    android:gravity="center">
+    android:background="#F8F9FA"
+    android:scrollbars="none">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="👤 Profile"
-        android:textSize="28sp"
-        android:textColor="#1C1C1C"
-        android:fontFamily="sans-serif-medium" />
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:gravity="center_horizontal">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Your account &amp; settings"
-        android:textSize="15sp"
-        android:textColor="#888888"
-        android:layout_marginTop="8dp" />
+        <!-- Screen Header -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile"
+            android:textSize="20sp"
+            android:textColor="#1C1C1C"
+            android:fontFamily="sans-serif-black"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="24dp" />
 
-</LinearLayout>
+        <!-- Profile Image & Camera Icon -->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/profileCard"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:cardCornerRadius="50dp"
+                app:cardElevation="4dp"
+                android:backgroundTint="#E0E0E0">
+                <ImageView
+                    android:id="@+id/ivProfileImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_person"
+                    android:contentDescription="Profile Image" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnChangePhoto"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="6dp"
+                android:layout_alignBottom="@id/profileCard"
+                android:layout_alignEnd="@id/profileCard"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="2dp"
+                android:backgroundTint="#FFFFFF"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground">
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_camera"
+                    app:tint="#1C1C1C"
+                    android:contentDescription="Edit Photo" />
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+
+        <!-- User Name & Joined Year -->
+        <TextView
+            android:id="@+id/tvProfileName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Guest User"
+            android:textSize="20sp"
+            android:textColor="#1C1C1C"
+            android:fontFamily="sans-serif-black" />
+
+        <TextView
+            android:id="@+id/tvJoinedYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Joined in 2026"
+            android:textSize="14sp"
+            android:textColor="#888888"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Quick Actions Row (My Ads & Saved Items) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="24dp">
+
+            <!-- My Ads Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardMyAds"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                android:backgroundTint="#FFFFFF"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="16dp">
+                    <FrameLayout
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_category_circle"
+                        android:backgroundTint="#E8F5E9"
+                        android:layout_marginBottom="8dp">
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_list"
+                            app:tint="#2E7D32" />
+                    </FrameLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="My Ads"
+                        android:textSize="14sp"
+                        android:textColor="#1C1C1C"
+                        android:fontFamily="sans-serif-medium" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Saved Items Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardSavedItems"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                android:backgroundTint="#FFFFFF"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="16dp">
+                    <FrameLayout
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_category_circle"
+                        android:backgroundTint="#E8F5E9"
+                        android:layout_marginBottom="8dp">
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_bookmark"
+                            app:tint="#2E7D32" />
+                    </FrameLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Saved Items"
+                        android:textSize="14sp"
+                        android:textColor="#1C1C1C"
+                        android:fontFamily="sans-serif-medium" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <!-- Personal Information Section -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            android:backgroundTint="#FFFFFF"
+            android:layout_marginBottom="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Personal Information"
+                    android:textSize="16sp"
+                    android:textColor="#1C1C1C"
+                    android:fontFamily="sans-serif-black"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- Row 1: Name -->
+                <RelativeLayout
+                    android:id="@+id/rowName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="12dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?android:attr/selectableItemBackground">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Name"
+                        android:textSize="15sp"
+                        android:textColor="#888888"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true">
+                        <TextView
+                            android:id="@+id/tvValName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Not Set"
+                            android:textSize="15sp"
+                            android:textColor="#1C1C1C"
+                            android:fontFamily="sans-serif-medium"
+                            android:layout_marginEnd="8dp" />
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/ic_chevron_right"
+                            app:tint="#888888" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#F0F0F0" />
+
+                <!-- Row 2: Phone -->
+                <RelativeLayout
+                    android:id="@+id/rowPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="12dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?android:attr/selectableItemBackground">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Phone"
+                        android:textSize="15sp"
+                        android:textColor="#888888"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true">
+                        <TextView
+                            android:id="@+id/tvValPhone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Not Set"
+                            android:textSize="15sp"
+                            android:textColor="#1C1C1C"
+                            android:fontFamily="sans-serif-medium"
+                            android:layout_marginEnd="8dp" />
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/ic_chevron_right"
+                            app:tint="#888888" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#F0F0F0" />
+
+                <!-- Row 3: Location -->
+                <RelativeLayout
+                    android:id="@+id/rowLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="12dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?android:attr/selectableItemBackground">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Location"
+                        android:textSize="15sp"
+                        android:textColor="#888888"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true" />
+
+                    <LinearLayout
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical|end"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true">
+                        <TextView
+                            android:id="@+id/tvValLocation"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Not Set"
+                            android:textSize="15sp"
+                            android:textColor="#1C1C1C"
+                            android:fontFamily="sans-serif-medium"
+                            android:gravity="end"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:layout_marginEnd="8dp" />
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/ic_chevron_right"
+                            app:tint="#888888" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Account Settings Section -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            android:backgroundTint="#FFFFFF"
+            android:layout_marginBottom="24dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Account Settings"
+                    android:textSize="16sp"
+                    android:textColor="#1C1C1C"
+                    android:fontFamily="sans-serif-black"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="16dp" />
+
+
+                <!-- Change Password -->
+                <RelativeLayout
+                    android:id="@+id/settingChangePassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="12dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?android:attr/selectableItemBackground">
+
+                    <ImageView
+                        android:id="@+id/icSetPassword"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_lock"
+                        app:tint="#1C1C1C"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Change Password"
+                        android:textSize="15sp"
+                        android:textColor="#1C1C1C"
+                        android:fontFamily="sans-serif-medium"
+                        android:layout_toEndOf="@id/icSetPassword"
+                        android:layout_marginStart="14dp"
+                        android:layout_centerVertical="true" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_chevron_right"
+                        app:tint="#888888"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#F0F0F0" />
+
+                <!-- Notifications -->
+                <RelativeLayout
+                    android:id="@+id/settingNotifications"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="12dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?android:attr/selectableItemBackground">
+
+                    <ImageView
+                        android:id="@+id/icSetNotifications"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_notifications"
+                        app:tint="#1C1C1C"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Notifications"
+                        android:textSize="15sp"
+                        android:textColor="#1C1C1C"
+                        android:fontFamily="sans-serif-medium"
+                        android:layout_toEndOf="@id/icSetNotifications"
+                        android:layout_marginStart="14dp"
+                        android:layout_centerVertical="true" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_chevron_right"
+                        app:tint="#888888"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#F0F0F0" />
+
+                <!-- Privacy Settings -->
+                <RelativeLayout
+                    android:id="@+id/settingPrivacy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="12dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?android:attr/selectableItemBackground">
+
+                    <ImageView
+                        android:id="@+id/icSetPrivacy"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_shield"
+                        app:tint="#1C1C1C"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Privacy Settings"
+                        android:textSize="15sp"
+                        android:textColor="#1C1C1C"
+                        android:fontFamily="sans-serif-medium"
+                        android:layout_toEndOf="@id/icSetPrivacy"
+                        android:layout_marginStart="14dp"
+                        android:layout_centerVertical="true" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_chevron_right"
+                        app:tint="#888888"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#F0F0F0" />
+
+                <!-- Help & Support -->
+                <RelativeLayout
+                    android:id="@+id/settingHelp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="12dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?android:attr/selectableItemBackground">
+
+                    <ImageView
+                        android:id="@+id/icSetHelp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_help_outline"
+                        app:tint="#1C1C1C"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Help &amp; Support"
+                        android:textSize="15sp"
+                        android:textColor="#1C1C1C"
+                        android:fontFamily="sans-serif-medium"
+                        android:layout_toEndOf="@id/icSetHelp"
+                        android:layout_marginStart="14dp"
+                        android:layout_centerVertical="true" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_chevron_right"
+                        app:tint="#888888"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#F0F0F0" />
+
+                <!-- About App -->
+                <RelativeLayout
+                    android:id="@+id/settingAbout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="12dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?android:attr/selectableItemBackground">
+
+                    <ImageView
+                        android:id="@+id/icSetAbout"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_info"
+                        app:tint="#1C1C1C"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="About App"
+                        android:textSize="15sp"
+                        android:textColor="#1C1C1C"
+                        android:fontFamily="sans-serif-medium"
+                        android:layout_toEndOf="@id/icSetAbout"
+                        android:layout_marginStart="14dp"
+                        android:layout_centerVertical="true" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_chevron_right"
+                        app:tint="#888888"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true" />
+                </RelativeLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Log Out Button -->
+        <TextView
+            android:id="@+id/btnLogOut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Log Out"
+            android:textSize="16sp"
+            android:textColor="#E53935"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:paddingVertical="16dp"
+            android:layout_marginBottom="20dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground" />
+
+    </LinearLayout>
+</ScrollView>

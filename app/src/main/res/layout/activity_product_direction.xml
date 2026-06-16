@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Header Toolbar -->
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#FFFFFF"
+        android:elevation="4dp"
+        android:paddingHorizontal="16dp">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_arrow_back"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            app:tint="#1C1C1C"
+            android:contentDescription="Back" />
+
+        <TextView
+            android:id="@+id/tvToolbarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Product Directions"
+            android:textSize="18sp"
+            android:textColor="#1C1C1C"
+            android:fontFamily="sans-serif-medium"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
+    <!-- SupportMapFragment -->
+    <fragment
+        android:id="@+id/directionMap"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar" />
+
+    <!-- Details Card floating on top of Map at the bottom -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="#FFFFFF">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tvDirectionProductName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tomatoes – Local Variety"
+                android:textSize="16sp"
+                android:textColor="#1C1C1C"
+                android:fontFamily="sans-serif-bold" />
+
+            <TextView
+                android:id="@+id/tvDirectionDistance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calculating distance..."
+                android:textSize="13sp"
+                android:textColor="#2E7D32"
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:id="@+id/tvDirectionAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Address: -"
+                android:textSize="13sp"
+                android:textColor="#888888"
+                android:layout_marginTop="4dp"
+                android:maxLines="2"
+                android:ellipsize="end" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
